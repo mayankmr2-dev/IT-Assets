@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Register{% endblock title %}
+
+{% block content %}
+<main class="page contact-page">
+        <section class="portfolio-block contact">
+                <div class="container">
+                        <div class="heading">
+                                <h2>Register Now</h2>
+                        </div>
+                        <form action="{% url 'signup' %}" method="POST">
+                                {% csrf_token %}
+
+                                {% if error %}
+                                <div class="alert alert-danger" role="alert">
+                                        {{error}}
+                                </div>
+                                {% endif %}
+                                <div class="form-group"><label for="full_name">Full Name</label><input
+                                                class="form-control item" type="text" name="fullname"></div>
+                                <div class="form-group"><label for="email">Email Id</label><input required
+                                                class="form-control item" type="email" name="email"></div>
+                                <div class="form-group"><label for="phonenumber">phonenumber</label><input required
+                                                class="form-control item" type="number" name="phonenumber"></div>
+                                <div class="form-group"><label for="username">Username</label><input required
+                                                class="form-control item" type="text" name="username">
+                                </div>
+                                <div class="form-group"><label for="password">Password</label><input required
+                                                class="form-control item" type="password" name="password">
+                                </div>
+                                <div class="form-group"><label for="passwordagain">Password Again</label><input required
+                                                class="form-control item" type="password" name="passwordagain">
+                                </div>
+                                <div class="form-group"><label for="unit">Unit</label><input required
+                                                class="form-control item" type="text" name="unit"></div>
+                </div>
+                <div class="form-group"><button class="btn btn-primary btn-block btn-lg" type="submit">Register</button>
+                </div>
+                </form>
+                </div>
+        </section>
+</main>
+{% endblock content %}
