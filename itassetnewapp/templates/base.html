@@ -14,14 +14,30 @@
 
 <body>
     <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
-        <div class="container"><a class="navbar-brand logo" href="{% url 'login' %}">IT-Assets</a><button
-                data-toggle="collapse" class="navbar-toggler" data-target="#navbarNav"><span class="sr-only">Toggle
+        <div class="container"><a class="navbar-brand logo">IT-Assets</a><button data-toggle="collapse"
+                class="navbar-toggler" data-target="#navbarNav"><span class="sr-only">Toggle
                     navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"></li>
+                    <!-- <li class="nav-item" role="presentation"></li> -->
+                    {% if user.is_authenticated %}
+
+                    <li class="nav-item">
+                        <h4><span class="badge badge-secondary">Welcome,{{user.username}}</span></h4>
+                    </li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'asset_list' %}">List</a>
+                    </li>
+                    <li class="nav-item" role="presentation"><a class="nav-link"
+                            href="{% url 'asset_entry' %}">Entry</a>
+                    </li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'signup' %}">Register</a>
                     </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>

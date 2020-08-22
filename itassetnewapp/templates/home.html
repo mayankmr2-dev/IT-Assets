@@ -1,3 +1,15 @@
 {% extends 'base.html' %}
 
-{% load static %}
+{% block title %} Home {% endblock title %}
+
+{% block content %}
+<div class="container pt-4">
+    <div class="jumbotron">
+        <h1 class="display-4">{{title}}</h1>
+        <p class="lead">IT ASSETS Entry and List</p>
+        <hr class="my-4">
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    </div>
+</div>
+{% endblock content %}

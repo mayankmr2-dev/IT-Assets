@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %} CE {% endblock title %}
+
+{% block content %}
+<div class="container pt-4">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1 class="display-4">{{title}}</h1>
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    {% comment %} {{form.as_p}} {% endcomment %}
+                    {{form|crispy}}
+                    <input class="btn btn-success" type="submit" value="Save">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

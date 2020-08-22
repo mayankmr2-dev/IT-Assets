@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %} CL {% endblock title %}
+
+{% block content %}
+<div class="container-fluids pt-4">
+    <div class="jumbotron">
+        <h1 class="display-4">{{title}}</h1>
+        <form method="POST" action="">
+            {% csrf_token %}
+            {{form|crispy}}
+            <input class="btn btn-primary" type="submit" value="Search">
+        </form>
+        <hr>
+        <table class="table table-bordered table-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">IP ADDRESS</th>
+                <th scope="col">HOSTNAME</th>
+                <th scope="col">BUSINESS NAME</th>
+                <th scope="col">HOSTING LOCATION</th>
+                <th scope="col">DB_MAKE/MODEL</th>
+                <th scope="col">WEBSERVER</th>
+                <th scope="col">MAKE/MODEL VERSION</th>
+                <th scope="col">PRIMARY ROLE</th>
+                <th scope="col">OWNER EMAIL</th>
+                <th scope="col">MOBILE</th>
+                <th scope="col">BILLING COUNT</th>
+                <th scope="col">SEVERITY</th>
+
+                <th scope="col">
+                    <center>REMOVE</center>
+                </th>
+            </tr>
+            {% for instance in queryset %}
+            <tr>
+                <td scope="row">{{forloop.counter}}</td>
+                <td scope="row">{{instance.IP_address}}</td>
+                <td scope="row">{{instance.hostname}}</td>
+                <td scope="row">{{instance.business_name}}</td>
+                <td scope="row">{{instance.hosting_location}}</td>
+                <td scope="row">{{instance.db_make_model}}</td>
+                <td scope="row">{{instance.webserver}}</td>
+                <td scope="row">{{instance.primary_role}}</td>
+                <td scope="row">{{instance.mobile_no}}</td>
+                <td scope="row">{{instance.user_email}}</td>
+                <td scope="row">{{instance.billingcount}}</td>
+                <td scope="row">{{instance.source}}</td>
+                <td scope="row">{{instance.severity}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock content %}
+
+<!-- list_display = ['IP_address', 'hostname', 'business_name',
+'hosting_location', 'db_make_model', 'primary_role', 'mobile_no'
+'user_email', 'billingcount', 'source', 'severity', 'timestamp'] -->
